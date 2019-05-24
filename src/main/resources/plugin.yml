@@ -1,0 +1,6 @@
+name: "${project.artifactId}"
+main: "${project.groupId}.${project.artifactId}"
+version: "${project.version}"
+description: "Another chat control/formatting plugin"
+author: "BillyGalbreath"
+api-version: "1.13"
