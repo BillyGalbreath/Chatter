@@ -94,7 +94,8 @@ public class Lang {
         config = new YamlConfiguration();
         try {
             config.load(configFile);
-        } catch (IOException | InvalidConfigurationException ex) {
+        } catch (IOException ignore) {
+        } catch (InvalidConfigurationException ex) {
             Bukkit.getLogger().log(Level.SEVERE, "Could not load " + Config.LANGUAGE_FILE + ", please correct your syntax errors", ex);
             throw Throwables.propagate(ex);
         }
