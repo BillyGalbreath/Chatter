@@ -4,3 +4,120 @@ version: "${project.version}"
 description: "Another chat control/formatting plugin"
 author: "BillyGalbreath"
 api-version: "1.13"
+softdepend:
+  - Vault
+  - Discord4Bukkit
+
+commands:
+  chatter:
+    description: Reload configs
+    usage: /<command> (reload)
+  broadcast:
+    description: Broadcasts a message to all players
+    usage: /<command> [message]
+    aliases:
+      - say
+  flip:
+    description: Flip a table, or some text
+    usage: /<command> (text)
+    aliases:
+      - russia
+      - shrug
+      - unflip
+  me:
+    description: Describes an action in the context of the player
+    usage: /<command> [action]
+    aliases:
+      - action
+      - describe
+  mute:
+    description: Mute a player from speaking
+    permission: command.mute
+    usage: /<command> [player] (channel)
+    aliases:
+      - silence
+      - unmute
+      - unsilence
+  nick:
+    description: Sets a nickname.
+    usage: /<command>
+    aliases:
+      - nickname
+  reply:
+    description: Reply back to last private message
+    permission: command.reply
+    usage: /<command> [message]
+    aliases:
+      - r
+  spy:
+    description: Toggle spy mode
+    permission: command.spy
+    usage: /<command> (player)
+    aliases:
+      - socialspy
+  tell:
+    description: Send a private message
+    permission: command.tell
+    usage: /<command> [player] [message]
+    aliases:
+      - whisper
+      - w
+      - privatemessage
+      - prvtmsg
+      - pm
+      - msg
+      - send
+      - m
+      - t
+      - emsg
+      - tell
+
+permissions:
+  command.chatter:
+    description: Allows to reload configs
+    default: op
+  command.broadcast:
+    description: Broadcast message
+    default: op
+  command.flip:
+    description: Allows you to flip a table or text
+    default: op
+  command.me:
+    description: Describe an action
+    default: op
+  command.mute:
+    description: Mute a player
+    default: op
+  command.mute.exempt:
+    description: Cannot be muted
+    default: false
+  command.nick:
+    description: Allows the player to set a nickname
+    default: op
+  command.nick.other:
+    description: Allows the player to set other players' nickname
+    default: op
+  command.nick.exempt:
+    description: Makes it so other players cannot set their nickname
+    default: op
+  command.reply:
+    description: Allow shortcut replying to private messages
+    default: op
+  command.russia:
+    description: Allows the player to use russia command
+    default: op
+  command.shrug:
+    description: Allows the player to shrug in chat
+    default: true
+  command.spy:
+    description: Toggle chat spy mode
+    default: op
+  command.spy.others:
+    description: Toggle chat spy mode for other players
+    default: op
+  command.spy.exempt:
+    description: Makes it so other players cannot toggle their spy mode
+    default: op
+  command.unflip:
+    description: Allows you to unflip a table
+    default: op
