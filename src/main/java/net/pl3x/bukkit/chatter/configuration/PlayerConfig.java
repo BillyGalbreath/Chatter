@@ -18,13 +18,10 @@ public class PlayerConfig extends YamlConfiguration {
     private static final Map<UUID, PlayerConfig> configs = new HashMap<>();
 
     public static CompletableFuture<PlayerConfig> getConfig(OfflinePlayer player) {
-        return getConfig(player.getUniqueId());
-    }
-
-    public static CompletableFuture<PlayerConfig> getConfig(UUID uuid) {
         return CompletableFuture.supplyAsync(() -> {
             synchronized (configs) {
-                return configs.computeIfAbsent(uuid, k -> new PlayerConfig(uuid));
+                return configs.computeIfAbsent(player.getUniqueId(),
+                        k -> new PlayerConfig(player.getUniqueId()));
             }
         });
     }
@@ -34,6 +31,12 @@ public class PlayerConfig extends YamlConfiguration {
             return configs.values().stream()
                     .filter(PlayerConfig::isSpying)
                     .collect(Collectors.toSet());
+        }
+    }
+
+    public static void removeConfig(OfflinePlayer player) {
+        synchronized (configs) {
+            configs.remove(player.getUniqueId());
         }
     }
 
@@ -50,11 +53,7 @@ public class PlayerConfig extends YamlConfiguration {
     }
 
     public boolean isUUID(OfflinePlayer player) {
-        return isUUID(player.getUniqueId());
-    }
-
-    public boolean isUUID(UUID uuid) {
-        return this.uuid == uuid;
+        return this.uuid == player.getUniqueId();
     }
 
     public Player getPlayer() {

@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class CmdReply implements TabExecutor {
-    final static Map<Player, Player> REPLY_DB = new HashMap<>();
+    public final static Map<Player, Player> REPLY_DB = new HashMap<>();
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
