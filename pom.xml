@@ -30,7 +30,7 @@
     <repositories>
         <repository>
             <id>purpur-repo</id>
-            <url>https://ci.pl3x.net/plugin/repository/everything/</url>
+            <url>https://repo.pl3x.net/</url>
         </repository>
         <repository>
             <id>vault-repo</id>

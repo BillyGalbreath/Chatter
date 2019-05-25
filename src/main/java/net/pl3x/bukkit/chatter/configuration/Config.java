@@ -13,7 +13,7 @@ import java.util.logging.Level;
 public class Config {
     public static String LANGUAGE_FILE = "lang-en.yml";
 
-    public static void init() {
+    private static void init() {
         LANGUAGE_FILE = getString("language-file", LANGUAGE_FILE);
     }
 
