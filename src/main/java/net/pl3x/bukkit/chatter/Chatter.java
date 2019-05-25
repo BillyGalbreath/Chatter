@@ -1,6 +1,7 @@
 package net.pl3x.bukkit.chatter;
 
 import net.pl3x.bukkit.chatter.command.CmdBroadcast;
+import net.pl3x.bukkit.chatter.command.CmdChatter;
 import net.pl3x.bukkit.chatter.command.CmdFlip;
 import net.pl3x.bukkit.chatter.command.CmdMe;
 import net.pl3x.bukkit.chatter.command.CmdMute;
@@ -50,6 +51,7 @@ public class Chatter extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
 
+        getCommand("chatter").setExecutor(new CmdChatter(this));
         getCommand("broadcast").setExecutor(new CmdBroadcast(this));
         getCommand("flip").setExecutor(new CmdFlip());
         getCommand("me").setExecutor(new CmdMe(this));
