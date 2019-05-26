@@ -1,5 +1,6 @@
 package net.pl3x.bukkit.chatter.command;
 
+import net.pl3x.bukkit.chatter.Chatter;
 import net.pl3x.bukkit.chatter.configuration.Lang;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -26,7 +27,7 @@ public class CmdFlip implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        FlipType flipType = FlipType.valueOf(label.toLowerCase());
+        FlipType flipType = FlipType.get(label);
 
         if (!sender.hasPermission("command." + flipType.permission)) {
             Lang.send(sender, Lang.COMMAND_NO_PERMISSION);
@@ -69,6 +70,15 @@ public class CmdFlip implements TabExecutor {
         FlipType(String permission, String text) {
             this.permission = permission;
             this.text = text;
+        }
+
+        public static FlipType get(String string) {
+            if (string == null) {
+                return FLIP;
+            }
+            String pluginName = Chatter.getInstance().getName().toLowerCase();
+            string = string.toLowerCase().replace(pluginName + ":", "");
+            return valueOf(string.toUpperCase());
         }
     }
 }
