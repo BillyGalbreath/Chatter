@@ -15,9 +15,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>net.milkbowl.vault</groupId>
-            <artifactId>VaultAPI</artifactId>
-            <version>1.7</version>
+            <groupId>me.lucko.luckperms</groupId>
+            <artifactId>luckperms-api</artifactId>
+            <version>4.4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

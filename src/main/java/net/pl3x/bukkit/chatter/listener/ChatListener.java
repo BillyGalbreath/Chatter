@@ -3,7 +3,7 @@ package net.pl3x.bukkit.chatter.listener;
 import net.pl3x.bukkit.chatter.Chatter;
 import net.pl3x.bukkit.chatter.configuration.Lang;
 import net.pl3x.bukkit.chatter.configuration.PlayerConfig;
-import net.pl3x.bukkit.chatter.hook.Vault;
+import net.pl3x.bukkit.chatter.hook.LuckPermsHook;
 import org.apache.commons.lang.WordUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -36,9 +36,9 @@ public class ChatListener implements Listener {
                 Lang.CHAT_FORMAT
                         .replace("{sender}", "%1$s")
                         .replace("{message}", "%2$s")
-                        .replace("{prefix}", Vault.getPrefix(sender))
-                        .replace("{suffix}", Vault.getSuffix(sender))
-                        .replace("{group}", WordUtils.capitalizeFully(Vault.getPrimaryGroup(sender)))
+                        .replace("{prefix}", LuckPermsHook.getPrefix(sender))
+                        .replace("{suffix}", LuckPermsHook.getSuffix(sender))
+                        .replace("{group}", WordUtils.capitalizeFully(LuckPermsHook.getPrimaryGroup(sender)))
                         .replace("{world}", sender.getWorld().getName())
                 )
         );

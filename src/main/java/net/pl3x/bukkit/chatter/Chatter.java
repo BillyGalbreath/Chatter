@@ -12,7 +12,6 @@ import net.pl3x.bukkit.chatter.command.CmdTell;
 import net.pl3x.bukkit.chatter.configuration.Config;
 import net.pl3x.bukkit.chatter.configuration.Lang;
 import net.pl3x.bukkit.chatter.hook.DiscordHook;
-import net.pl3x.bukkit.chatter.hook.Vault;
 import net.pl3x.bukkit.chatter.listener.ChatListener;
 import net.pl3x.bukkit.chatter.listener.JoinListener;
 import org.bukkit.Bukkit;
@@ -31,18 +30,9 @@ public class Chatter extends JavaPlugin {
         Config.reload();
         Lang.reload();
 
-        if (!Bukkit.getPluginManager().isPluginEnabled("Vault")) {
-            getLogger().severe("Missing required dependency: Vault");
-            return;
-        }
-
-        if (!Vault.setupPermissions()) {
-            getLogger().severe("Vault could not find a permissions plugin to hook to!");
-            return;
-        }
-
-        if (!Vault.setupChat()) {
-            getLogger().severe("Vault could not register chat service! Do you have a permissions plugin installed?");
+        if (!Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
+            getLogger().severe("Missing required dependency: LuckPerms");
+            getServer().getPluginManager().disablePlugin(this);
             return;
         }
 

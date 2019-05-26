@@ -13,8 +13,14 @@ import java.util.logging.Level;
 public class Config {
     public static String LANGUAGE_FILE = "lang-en.yml";
 
+    public static boolean INHERIT_PREFIXES_FROM_ALL_GROUPS = true;
+    public static boolean INHERIT_SUFFIXES_FROM_ALL_GROUPS = true;
+
     private static void init() {
         LANGUAGE_FILE = getString("language-file", LANGUAGE_FILE);
+
+        INHERIT_PREFIXES_FROM_ALL_GROUPS = getBoolean("inherit-prefixes-from-all-groups", INHERIT_PREFIXES_FROM_ALL_GROUPS);
+        INHERIT_SUFFIXES_FROM_ALL_GROUPS = getBoolean("inherit-suffixes-from-all-groups", INHERIT_SUFFIXES_FROM_ALL_GROUPS);
     }
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################
@@ -50,5 +56,10 @@ public class Config {
     private static String getString(String path, String def) {
         config.addDefault(path, def);
         return config.getString(path, config.getString(path));
+    }
+
+    private static boolean getBoolean(String path, boolean def) {
+        config.addDefault(path, def);
+        return config.getBoolean(path, config.getBoolean(path));
     }
 }
