@@ -11,22 +11,26 @@ public class LuckPermsHook {
         User user = LuckPerms.getApi().getUser(player.getUniqueId());
         Contexts context = LuckPerms.getApi().getContextForUser(user).orElseThrow(() ->
                 new IllegalStateException("Could not get LuckPerms context for player " + player));
+        String prefix;
         if (Config.INHERIT_PREFIXES_FROM_ALL_GROUPS) {
-            return String.join("", user.getCachedData().getMetaData(context).getPrefixes().values());
+            prefix = String.join("", user.getCachedData().getMetaData(context).getPrefixes().values());
         } else {
-            return user.getCachedData().getMetaData(context).getPrefix();
+            prefix = user.getCachedData().getMetaData(context).getPrefix();
         }
+        return prefix == null ? "" : prefix;
     }
 
     public static String getSuffix(Player player) {
         User user = LuckPerms.getApi().getUser(player.getUniqueId());
         Contexts context = LuckPerms.getApi().getContextForUser(user).orElseThrow(() ->
                 new IllegalStateException("Could not get LuckPerms context for player " + player));
+        String suffix;
         if (Config.INHERIT_SUFFIXES_FROM_ALL_GROUPS) {
-            return String.join("", user.getCachedData().getMetaData(context).getSuffixes().values());
+            suffix = String.join("", user.getCachedData().getMetaData(context).getSuffixes().values());
         } else {
-            return user.getCachedData().getMetaData(context).getSuffix();
+            suffix = user.getCachedData().getMetaData(context).getSuffix();
         }
+        return suffix == null ? "" : suffix;
     }
 
     public static String getPrimaryGroup(Player player) {
