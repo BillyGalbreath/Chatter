@@ -16,11 +16,15 @@ public class Config {
     public static boolean INHERIT_PREFIXES_FROM_ALL_GROUPS = true;
     public static boolean INHERIT_SUFFIXES_FROM_ALL_GROUPS = true;
 
+    public static int ME_COOLDOWN = 300; // 5 minutes
+
     private static void init() {
         LANGUAGE_FILE = getString("language-file", LANGUAGE_FILE);
 
         INHERIT_PREFIXES_FROM_ALL_GROUPS = getBoolean("inherit-prefixes-from-all-groups", INHERIT_PREFIXES_FROM_ALL_GROUPS);
         INHERIT_SUFFIXES_FROM_ALL_GROUPS = getBoolean("inherit-suffixes-from-all-groups", INHERIT_SUFFIXES_FROM_ALL_GROUPS);
+
+        ME_COOLDOWN = getInt("cooldown.me", ME_COOLDOWN);
     }
 
     // ############################  DO NOT EDIT BELOW THIS LINE  ############################
@@ -61,5 +65,10 @@ public class Config {
     private static boolean getBoolean(String path, boolean def) {
         config.addDefault(path, def);
         return config.getBoolean(path, config.getBoolean(path));
+    }
+
+    private static int getInt(String path, int def) {
+        config.addDefault(path, def);
+        return config.getInt(path, config.getInt(path));
     }
 }

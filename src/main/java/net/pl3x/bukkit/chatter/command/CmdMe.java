@@ -1,6 +1,7 @@
 package net.pl3x.bukkit.chatter.command;
 
 import net.pl3x.bukkit.chatter.Chatter;
+import net.pl3x.bukkit.chatter.configuration.Config;
 import net.pl3x.bukkit.chatter.configuration.Lang;
 import net.pl3x.bukkit.chatter.configuration.PlayerConfig;
 import org.bukkit.Bukkit;
@@ -46,16 +47,16 @@ public class CmdMe implements TabExecutor {
                 if (config.isMuted()) {
                     Lang.send(sender, Lang.YOU_ARE_MUTED);
                 } else {
-                    broadcast(sender, args);
+                    broadcast(sender, command, args);
                 }
             });
         } else {
-            broadcast(sender, args);
+            broadcast(sender, command, args);
         }
         return true;
     }
 
-    private void broadcast(CommandSender sender, String[] args) {
+    private void broadcast(CommandSender sender, Command command, String[] args) {
         Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', Lang.ME_FORMAT
                 .replace("{sender}", sender.getName().equals("CONSOLE") ? "Console" : sender.getName())
                 .replace("{message}", String.join(" ", args))));
@@ -64,6 +65,10 @@ public class CmdMe implements TabExecutor {
             plugin.getDiscordHook().sendToDiscord(Lang.ME_FORMAT_DISCORD
                     .replace("{sender}", sender.getName().equals("CONSOLE") ? "Console" : sender.getName())
                     .replace("{message}", String.join(" ", args)));
+        }
+
+        if (sender instanceof Player && Bukkit.getPluginManager().isPluginEnabled("CmdCD")) {
+            net.pl3x.bukkit.cmdcd.CmdCD.addCooldown(command, ((Player) sender).getUniqueId(), Config.ME_COOLDOWN);
         }
     }
 }

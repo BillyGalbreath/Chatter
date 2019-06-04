@@ -5,6 +5,7 @@ description: "Another chat control/formatting plugin"
 author: "BillyGalbreath"
 api-version: "1.13"
 softdepend:
+  - CmdCD
   - LuckPerms
   - Discord4Bukkit
 
