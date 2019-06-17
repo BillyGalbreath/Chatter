@@ -21,6 +21,12 @@ public class Lang {
 
     public static String CHAT_FORMAT = "&r{prefix}&r&7{sender}&r{suffix}&r&e:&r&7&o {message}";
 
+    public static String HOVER_TOOLTIP = "{prefix}{group}&e:&r {name}";
+    public static String CLICK_SUGGEST_COMMAND = "/msg {name} ";
+
+    public static String ITEM_FORMAT = "&3[&e{item}&3]";
+    public static String ITEM_FORMAT_MULTI = "&3[&e{item} &7\u00D7&6{amount}&3]";
+
     public static String BROADCAST_FORMAT = "&2[&dBroadcast&2]&7 {message}";
     public static String BROADCAST_FORMAT_DISCORD = "**[Broadcast]** *{message}*";
 
@@ -55,6 +61,12 @@ public class Lang {
         PLAYER_EXEMPT = getString("player-exempt", PLAYER_EXEMPT);
 
         CHAT_FORMAT = getString("chat-format", CHAT_FORMAT);
+
+        HOVER_TOOLTIP = getString("chat-hover-name-tooltip", "{prefix}{group}&e:&r {name}");
+        CLICK_SUGGEST_COMMAND = getString("chat-click-name-suggest-command", "/msg {name} ");
+
+        ITEM_FORMAT = getString("chat-item-format", "&3[&e{item}&3]");
+        ITEM_FORMAT_MULTI = getString("chat-item-format-multi", "&3[&e{item} &7\u00D7&6{amount}&3]");
 
         BROADCAST_FORMAT = getString("broadcast-format", BROADCAST_FORMAT);
         BROADCAST_FORMAT_DISCORD = getString("broadcast-format-discord", BROADCAST_FORMAT_DISCORD);
