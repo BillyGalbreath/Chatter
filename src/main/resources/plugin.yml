@@ -12,14 +12,17 @@ softdepend:
 commands:
   chatter:
     description: Reload configs
+    permission: command.chatter
     usage: /<command> (reload)
   broadcast:
     description: Broadcasts a message to all players
+    permission: command.broadcast
     usage: /<command> [message]
     aliases:
       - say
   flip:
     description: Flip a table, or some text
+    permission: command.flip
     usage: /<command> (text)
     aliases:
       - russia
@@ -27,6 +30,7 @@ commands:
       - unflip
   me:
     description: Describes an action in the context of the player
+    permission: command.me
     usage: /<command> [action]
     aliases:
       - action
@@ -41,6 +45,7 @@ commands:
       - unsilence
   nick:
     description: Sets a nickname.
+    permission: command.mick
     usage: /<command>
     aliases:
       - nickname
