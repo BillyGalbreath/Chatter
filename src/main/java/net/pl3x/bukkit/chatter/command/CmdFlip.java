@@ -42,6 +42,8 @@ public class CmdFlip implements TabExecutor {
         String message = flipType.text;
         if (flipType == FlipType.FLIP && args.length > 0) {
             message = flipText(String.join(" ", args));
+        } else if (flipType == FlipType.SHRUG && args.length > 0) {
+            message = String.join(" ", args) + " " + flipType.text;
         }
 
         ((Player) sender).chat(message);
@@ -76,9 +78,9 @@ public class CmdFlip implements TabExecutor {
             if (string == null) {
                 return FLIP;
             }
-            String pluginName = Chatter.getInstance().getName().toLowerCase();
-            string = string.toLowerCase().replace(pluginName + ":", "");
-            return valueOf(string.toUpperCase());
+            String pluginName = Chatter.getInstance().getName().toUpperCase();
+            string = string.toUpperCase().replace(pluginName + ":", "");
+            return valueOf(string);
         }
     }
 }
