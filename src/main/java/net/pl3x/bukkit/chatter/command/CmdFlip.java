@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class CmdFlip implements TabExecutor {
     private static final String normal = "abcdefghijklmnopqrstuvwxyz_,;.?!/\\'ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static final String flipped = "ɐqɔpǝɟbɥıظʞןɯuodbɹsʇnʌʍxʎz‾'؛˙¿¡/\\,∀qϽᗡƎℲƃHIſʞ˥WNOԀὉᴚS⊥∩ΛMXʎZ";
+    private static final String flipped = "ɐqɔpǝɟbɥıſʞןɯuodbɹsʇnʌʍxʎz‾'؛˙¿¡/\\,∀qϽᗡƎℲƃHIſʞ˥WNOԀὉᴚS⊥∩ΛMXʎZ";
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
