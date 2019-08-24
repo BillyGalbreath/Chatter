@@ -14,6 +14,7 @@ import net.pl3x.bukkit.chatter.configuration.Lang;
 import net.pl3x.bukkit.chatter.hook.DiscordHook;
 import net.pl3x.bukkit.chatter.listener.ChatListener;
 import net.pl3x.bukkit.chatter.listener.JoinListener;
+import net.pl3x.bukkit.chatter.listener.RacismListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -40,6 +41,7 @@ public class Chatter extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new RacismListener(), this);
 
         getCommand("chatter").setExecutor(new CmdChatter(this));
         getCommand("broadcast").setExecutor(new CmdBroadcast(this));
