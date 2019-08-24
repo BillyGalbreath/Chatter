@@ -8,6 +8,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.logging.Level;
 
 public class Config {
@@ -16,6 +19,9 @@ public class Config {
     public static boolean INHERIT_PREFIXES_FROM_ALL_GROUPS = true;
     public static boolean INHERIT_SUFFIXES_FROM_ALL_GROUPS = true;
 
+    public static List<String> RACISM = new ArrayList<>();
+    public static String AUTO_BAN_RACISM = "ban {player} AutoBan: Racism";
+
     public static int ME_COOLDOWN = 300; // 5 minutes
 
     private static void init() {
@@ -23,6 +29,10 @@ public class Config {
 
         INHERIT_PREFIXES_FROM_ALL_GROUPS = getBoolean("inherit-prefixes-from-all-groups", INHERIT_PREFIXES_FROM_ALL_GROUPS);
         INHERIT_SUFFIXES_FROM_ALL_GROUPS = getBoolean("inherit-suffixes-from-all-groups", INHERIT_SUFFIXES_FROM_ALL_GROUPS);
+
+        RACISM.clear();
+        RACISM.addAll(getList("racist-words", Arrays.asList("nigger", "nigga")));
+        AUTO_BAN_RACISM = getString("auto-ban-racism", AUTO_BAN_RACISM);
 
         ME_COOLDOWN = getInt("cooldown.me", ME_COOLDOWN);
     }
@@ -70,5 +80,10 @@ public class Config {
     private static int getInt(String path, int def) {
         config.addDefault(path, def);
         return config.getInt(path, config.getInt(path));
+    }
+
+    private static <T> List getList(String path, T def) {
+        config.addDefault(path, def);
+        return config.getList(path, config.getList(path));
     }
 }

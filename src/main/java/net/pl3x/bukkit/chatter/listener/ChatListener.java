@@ -6,6 +6,7 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.server.v1_14_R1.NBTTagCompound;
 import net.pl3x.bukkit.chatter.Chatter;
+import net.pl3x.bukkit.chatter.configuration.Config;
 import net.pl3x.bukkit.chatter.configuration.Lang;
 import net.pl3x.bukkit.chatter.configuration.PlayerConfig;
 import net.pl3x.bukkit.chatter.hook.LuckPermsHook;
@@ -54,6 +55,17 @@ public class ChatListener implements Listener {
         }
 
         String message = checkColorPerms(sender, event.getMessage());
+
+        String msg = message.toLowerCase();
+        if (Config.RACISM.parallelStream().anyMatch(msg::contains)) {
+            event.setCancelled(true);
+            event.setMessage("");
+            event.setFormat("");
+            event.getRecipients().clear();
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Config.AUTO_BAN_RACISM
+                    .replace("{player}", event.getPlayer().getName()));
+            return;
+        }
 
         String format = ChatColor.translateAlternateColorCodes('&', Lang.CHAT_FORMAT
                 .replace("{prefix}", LuckPermsHook.getPrefix(sender))
