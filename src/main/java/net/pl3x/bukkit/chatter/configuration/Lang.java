@@ -28,10 +28,8 @@ public class Lang {
     public static String ITEM_FORMAT_MULTI = "&3[&e{item} &7\u00D7&6{amount}&3]";
 
     public static String BROADCAST_FORMAT = "&2[&dBroadcast&2]&7 {message}";
-    public static String BROADCAST_FORMAT_DISCORD = "**[Broadcast]** *{message}*";
 
     public static String ME_FORMAT = "&6&o* {sender} {message}";
-    public static String ME_FORMAT_DISCORD = "***{sender}*** *{message}*";
 
     public static String PAY_RESPECTS = "&r{prefix}&r&7{player}&r{suffix}&r&e:&r&7&o *pays respects*";
 
@@ -71,10 +69,8 @@ public class Lang {
         ITEM_FORMAT_MULTI = getString("chat-item-format-multi", "&3[&e{item} &7\u00D7&6{amount}&3]");
 
         BROADCAST_FORMAT = getString("broadcast-format", BROADCAST_FORMAT);
-        BROADCAST_FORMAT_DISCORD = getString("broadcast-format-discord", BROADCAST_FORMAT_DISCORD);
 
         ME_FORMAT = getString("me-format", ME_FORMAT);
-        ME_FORMAT_DISCORD = getString("me-format-discord", ME_FORMAT_DISCORD);
 
         PAY_RESPECTS = getString("pay-respects", PAY_RESPECTS);
 
