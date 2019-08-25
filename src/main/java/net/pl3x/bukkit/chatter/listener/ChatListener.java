@@ -45,6 +45,10 @@ public class ChatListener implements Listener {
             event.setFormat("");
             event.getRecipients().clear();
             Lang.broadcast(Lang.PAY_RESPECTS
+                    .replace("{prefix}", LuckPermsHook.getPrefix(event.getPlayer()))
+                    .replace("{suffix}", LuckPermsHook.getSuffix(event.getPlayer()))
+                    .replace("{group}", WordUtils.capitalizeFully(LuckPermsHook.getPrimaryGroup(event.getPlayer())))
+                    .replace("{world}", event.getPlayer().getWorld().getName())
                     .replace("{player}", event.getPlayer().getName()));
         }
     }
