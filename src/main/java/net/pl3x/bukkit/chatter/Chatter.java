@@ -11,7 +11,6 @@ import net.pl3x.bukkit.chatter.command.CmdSpy;
 import net.pl3x.bukkit.chatter.command.CmdTell;
 import net.pl3x.bukkit.chatter.configuration.Config;
 import net.pl3x.bukkit.chatter.configuration.Lang;
-import net.pl3x.bukkit.chatter.hook.DiscordHook;
 import net.pl3x.bukkit.chatter.listener.ChatListener;
 import net.pl3x.bukkit.chatter.listener.JoinListener;
 import net.pl3x.bukkit.chatter.listener.RacismListener;
@@ -20,8 +19,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Chatter extends JavaPlugin {
     private static Chatter instance;
-
-    private DiscordHook discordHook;
 
     public Chatter() {
         instance = this;
@@ -36,8 +33,6 @@ public class Chatter extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
-
-        discordHook = new DiscordHook(getServer().getPluginManager().getPlugin("Discord4Bukkit"));
 
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
@@ -56,9 +51,5 @@ public class Chatter extends JavaPlugin {
 
     public static Chatter getInstance() {
         return instance;
-    }
-
-    public DiscordHook getDiscordHook() {
-        return discordHook;
     }
 }

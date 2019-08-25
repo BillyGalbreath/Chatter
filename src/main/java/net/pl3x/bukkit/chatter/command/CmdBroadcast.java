@@ -40,12 +40,6 @@ public class CmdBroadcast implements TabExecutor {
 
         Lang.broadcast(Lang.BROADCAST_FORMAT
                 .replace("{message}", String.join(" ", args)));
-
-        if (plugin.getDiscordHook() != null) {
-            plugin.getDiscordHook().sendToDiscord(Lang.BROADCAST_FORMAT_DISCORD
-                    .replace("{message}", String.join(" ", args)));
-        }
-
         return true;
     }
 }

@@ -61,12 +61,6 @@ public class CmdMe implements TabExecutor {
                 .replace("{sender}", sender.getName().equals("CONSOLE") ? "Console" : sender.getName())
                 .replace("{message}", String.join(" ", args))));
 
-        if (plugin.getDiscordHook() != null) {
-            plugin.getDiscordHook().sendToDiscord(Lang.ME_FORMAT_DISCORD
-                    .replace("{sender}", sender.getName().equals("CONSOLE") ? "Console" : sender.getName())
-                    .replace("{message}", String.join(" ", args)));
-        }
-
         if (sender instanceof Player && Bukkit.getPluginManager().isPluginEnabled("CmdCD")) {
             net.pl3x.bukkit.cmdcd.CmdCD.addCooldown(command, ((Player) sender).getUniqueId(), Config.ME_COOLDOWN);
         }
