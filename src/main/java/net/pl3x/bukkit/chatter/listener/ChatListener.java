@@ -37,6 +37,18 @@ import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 
 public class ChatListener implements Listener {
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
+    public void onPayRespects(AsyncPlayerChatEvent event) {
+        if (ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', event.getMessage())).trim().equalsIgnoreCase("f")) {
+            event.setCancelled(true);
+            event.setMessage("");
+            event.setFormat("");
+            event.getRecipients().clear();
+            Lang.broadcast(Lang.PAY_RESPECTS
+                    .replace("{player}", event.getPlayer().getName()));
+        }
+    }
+
     @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         Player sender = event.getPlayer();

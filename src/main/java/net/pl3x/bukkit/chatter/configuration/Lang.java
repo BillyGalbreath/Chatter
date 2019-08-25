@@ -33,6 +33,8 @@ public class Lang {
     public static String ME_FORMAT = "&6&o* {sender} {message}";
     public static String ME_FORMAT_DISCORD = "***{sender}*** *{message}*";
 
+    public static String PAY_RESPECTS = "&r{prefix}&r&7{player}&r{suffix}&r&e:&r&7&o *pays respects*";
+
     public static String TARGET_MUTED = "&7{target}&d muted";
     public static String TARGET_UNMUTED = "&7{target}&d unmuted";
     public static String YOU_ARE_MUTED = "&4You are muted";
@@ -73,6 +75,8 @@ public class Lang {
 
         ME_FORMAT = getString("me-format", ME_FORMAT);
         ME_FORMAT_DISCORD = getString("me-format-discord", ME_FORMAT_DISCORD);
+
+        PAY_RESPECTS = getString("pay-respects", PAY_RESPECTS);
 
         TARGET_MUTED = getString("target-muted", TARGET_MUTED);
         TARGET_UNMUTED = getString("target-unmuted", TARGET_UNMUTED);
