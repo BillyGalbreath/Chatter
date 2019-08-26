@@ -44,7 +44,7 @@ commands:
       - unsilence
   nick:
     description: Sets a nickname.
-    permission: command.mick
+    permission: command.nick
     usage: /<command>
     aliases:
       - nickname
