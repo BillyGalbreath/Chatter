@@ -94,7 +94,12 @@ public class RacismListener implements Listener {
         if (str == null) {
             return false;
         }
-        str = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', str.toLowerCase()));
+        str = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', str.toLowerCase()
+                .replace(" ", "")
+                .replace("-", "")
+                .replace(".", "")
+                .replace(",", "")
+        ));
         return Config.RACISM.parallelStream().anyMatch(str::contains);
     }
 
