@@ -36,7 +36,7 @@ public class Chatter extends JavaPlugin {
 
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
-        getServer().getPluginManager().registerEvents(new RacismListener(), this);
+        getServer().getPluginManager().registerEvents(new RacismListener(this), this);
 
         getCommand("chatter").setExecutor(new CmdChatter(this));
         getCommand("broadcast").setExecutor(new CmdBroadcast(this));

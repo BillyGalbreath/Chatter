@@ -1,5 +1,6 @@
 package net.pl3x.bukkit.chatter.listener;
 
+import net.pl3x.bukkit.chatter.Chatter;
 import net.pl3x.bukkit.chatter.configuration.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -17,8 +18,15 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class RacismListener implements Listener {
+    private final Chatter plugin;
+
+    public RacismListener(Chatter plugin) {
+        this.plugin = plugin;
+    }
+
     @EventHandler(priority = EventPriority.LOWEST)
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         if (containsRacism(event.getMessage().toLowerCase())) {
@@ -104,6 +112,19 @@ public class RacismListener implements Listener {
     }
 
     private void processBan(Player player) {
+        if (!Bukkit.isPrimaryThread()) {
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    processBanCommand(player);
+                }
+            }.runTask(plugin);
+        } else {
+            processBanCommand(player);
+        }
+    }
+
+    private void processBanCommand(Player player) {
         Bukkit.dispatchCommand(Bukkit.getConsoleSender(), Config.AUTO_BAN_RACISM
                 .replace("{player}", player.getName()));
     }
