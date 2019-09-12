@@ -112,6 +112,7 @@ public class RacismListener implements Listener {
     }
 
     private void processBan(Player player) {
+        plugin.getLogger().warning(player.getName() + " has said the magic n word! :O");
         if (!Bukkit.isPrimaryThread()) {
             new BukkitRunnable() {
                 @Override
