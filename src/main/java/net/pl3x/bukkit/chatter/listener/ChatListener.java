@@ -4,7 +4,7 @@ import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
-import net.minecraft.server.v1_14_R1.NBTTagCompound;
+import net.minecraft.server.v1_15_R1.NBTTagCompound;
 import net.pl3x.bukkit.chatter.Chatter;
 import net.pl3x.bukkit.chatter.configuration.Lang;
 import net.pl3x.bukkit.chatter.configuration.PlayerConfig;
@@ -13,8 +13,8 @@ import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.craftbukkit.v1_14_R1.enchantments.CraftEnchantment;
-import org.bukkit.craftbukkit.v1_14_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_15_R1.enchantments.CraftEnchantment;
+import org.bukkit.craftbukkit.v1_15_R1.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -93,7 +93,7 @@ public class ChatListener implements Listener {
                 itemInHand.setItemMeta(meta);
             }
 
-            net.minecraft.server.v1_14_R1.ItemStack nmsItemClone = CraftItemStack.asNMSCopy(itemInHand);
+            net.minecraft.server.v1_15_R1.ItemStack nmsItemClone = CraftItemStack.asNMSCopy(itemInHand);
             NBTTagCompound itemNBTTag = nmsItemClone.save(new NBTTagCompound());
 
             String itemName = getItemName(itemInHand);
@@ -138,7 +138,7 @@ public class ChatListener implements Listener {
             if (!enchants.isEmpty() && (meta == null || !meta.hasItemFlag(ItemFlag.HIDE_ENCHANTS))) {
                 StringBuilder enchantTags = new StringBuilder();
                 for (Map.Entry<Enchantment, Integer> entry : enchants.entrySet()) {
-                    enchantTags.append("\n    ").append(((CraftEnchantment) entry.getKey()).getHandle().d(entry.getValue()).e());
+                    enchantTags.append("\n    ").append(((CraftEnchantment) entry.getKey()).getHandle().d(entry.getValue()).getString());
                 }
                 item = item + "\n  Enchantments:" + enchantTags;
             }
